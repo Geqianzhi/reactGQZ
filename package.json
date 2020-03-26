@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.00.0",
+    "antd": "^4.0.4",
     "antd-dayjs-webpack-plugin": "^0.0.8",
     "less-loader": "^5.0.0",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-scripts": "3.2.0"
   },
   "scripts": {
