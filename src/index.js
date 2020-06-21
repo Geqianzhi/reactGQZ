@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './styles/normailze.css';
 import * as serviceWorker from './serviceWorker';
-import zhCN from 'antd/es/locale/zh_CN';
+import moment from 'moment';
 import {ConfigProvider} from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
 ReactDOM.render(
     <ConfigProvider locale={zhCN}>
        <App />

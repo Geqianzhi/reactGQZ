@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.0.4",
+    "antd": "^4.3.4",
     "antd-dayjs-webpack-plugin": "^0.0.8",
     "less-loader": "^5.0.0",
+    "moment": "^2.27.0",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
