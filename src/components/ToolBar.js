@@ -3,7 +3,7 @@ import ThemeButton from './ThemeButton'
 export default function ToolBar(props) {
     return (
         
-        <ThemeButton changetheme={props.changetheme} msg="你好">1111111111</ThemeButton>
+        <ThemeButton changetheme={props.changetheme} msg="你好aaaa">1111111111</ThemeButton>
         
     )
 }
