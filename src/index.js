@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 import App from './App';
-import './styles/normailze.css';
-import * as serviceWorker from './serviceWorker';
-import moment from 'moment';
-import {ConfigProvider} from 'antd';
-import zhCN from 'antd/es/locale/zh_CN';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
+import reportWebVitals from './reportWebVitals';
+
 ReactDOM.render(
-    <ConfigProvider locale={zhCN}>
-       <App />
-    </ConfigProvider>, 
-    document.getElementById('root')
+  <React.Fragment>
+    <App />
+  </React.Fragment>,
+  document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
