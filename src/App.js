@@ -9,7 +9,7 @@ class App extends react.Component {
       super();
       this.state = {
         theme:themes.light,
-        arr:[[1,2],[4,5],[7,8]]
+        arr:[[1,2],[4,5],[7,8],[9,10]]
       }
     };
     toggleTheme = (v)=>{
