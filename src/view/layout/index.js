@@ -14,7 +14,7 @@ export default function LayoutPage() {
     return (
         <>
             <Layout className="layout">
-                <Sider collapsible collapsed={collapsed}>Sider</Sider>
+                <Sider collapsible collapsed={collapsed} onCollapse={() => setColl(collapsed)}>Sider</Sider>
                 <Layout>
                     <Header className="header">
                         <div className="collapsed-icon" onClick={() => setColl(collapsed)}>
