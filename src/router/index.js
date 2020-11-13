@@ -6,14 +6,14 @@ const routes = [
         path: "/",
         exact: true,
         render: () => (
-          <Redirect to="/home"/>
+          <Redirect to="/Layout"/>
         )
     },
     {
-        path:'/home',
+        path:'/Layout',
         component: React.lazy(() => import ('../view/layout')),
         routes:[
-            
+
         ]
     }
 ]
