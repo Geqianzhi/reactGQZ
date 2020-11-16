@@ -11,10 +11,13 @@ import {
 } from '@ant-design/icons';
 const {Header,Sider,Content} = Layout;
 const { SubMenu } = Menu;
-function LayoutPage(props) {
+function LayoutPage() {
     const [collapsed,setCollapsed] = useState(false);
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
+    };
+    const selectLink =({ item, key, keyPath, domEvent }) =>{
+        console.log(item)
     };
     return (
         <>
@@ -24,8 +27,7 @@ function LayoutPage(props) {
                     <Menu
                         mode="inline"
                         theme="dark"
-                        defaultSelectedKeys={['0']}
-
+                        onClick={selectLink}
                     >   
 
                        {
@@ -36,7 +38,8 @@ function LayoutPage(props) {
                                         return (
                                             <SubMenu key={index} icon={<UserOutlined />} title={e.name}>
                                                 <Menu.Item key={`${index}-${i}`}>
-                                                    <NavLink to={item.path}>{item.name}</NavLink>
+                                                    {/* <NavLink to={item.path}>{item.name}</NavLink> */}
+                                                    {item.name}
                                                 </Menu.Item>
                                             </SubMenu>
                                         )
@@ -66,7 +69,9 @@ function LayoutPage(props) {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                     </Header>
-                    <Content ></Content>
+                    <Content >
+                        {/* <Route path="/" exact component={Home}></Route> */}
+                    </Content>
                 </Layout>
             </Layout>
         </>
