@@ -1,20 +1,23 @@
-import React,{useState} from 'react';
+import React,{useState,memo} from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
+import {childernRoutes} from '../../router';
+import { NavLink } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
 import './layout.less';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     UserOutlined,
-    LaptopOutlined,
-    NotificationOutlined
 } from '@ant-design/icons';
 const {Header,Sider,Content} = Layout;
-const { SubMenu } = Menu;
-export default function LayoutPage() {
+// const { SubMenu } = Menu;
+function LayoutPage(props) {
     const [collapsed,setCollapsed] = useState(false);
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
+    console.log(props)
+    const {route} = props;
     return (
         <>
             <Layout className="layout">
@@ -23,28 +26,25 @@ export default function LayoutPage() {
                     <Menu
                         mode="inline"
                         theme="dark"
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
+                        defaultSelectedKeys={['0']}
 
-                    >
-                        <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                            <Menu.Item key="1">option1</Menu.Item>
-                            <Menu.Item key="2">option2</Menu.Item>
-                            <Menu.Item key="3">option3</Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                            <Menu.Item key="5">option5</Menu.Item>
-                            <Menu.Item key="6">option6</Menu.Item>
-                            <Menu.Item key="7">option7</Menu.Item>
-                            <Menu.Item key="8">option8</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
-                            <Menu.Item key="9">option9</Menu.Item>
-                            <Menu.Item key="10">option10</Menu.Item>
-                            <Menu.Item key="11">option11</Menu.Item>
-                            <Menu.Item key="12">option12</Menu.Item>
-                        </SubMenu>
+                    >   
+
+                       {
+                           childernRoutes.map((e,index) => {
+                               if(e.childrens){
+                                    return null
+                               }else{
+                                    return (
+                                        <Menu.Item key={index} icon={<UserOutlined />}>
+                                            <NavLink to={e.path}>{e.name}</NavLink>
+                                        </Menu.Item>
+                                    )
+                               }
+                           })
+                       }
+                       
+                       
                     </Menu>
                 </Sider>
                 <Layout>
@@ -58,9 +58,10 @@ export default function LayoutPage() {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                     </Header>
-                    <Content >Content</Content>
+                    <Content >{renderRoutes(route.childrens)}</Content>
                 </Layout>
             </Layout>
         </>
     )
 }
+export default memo(LayoutPage);

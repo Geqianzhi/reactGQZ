@@ -12,10 +12,16 @@ const routes = [
     {
         path:'/Layout',
         component: React.lazy(() => import ('../view/layout')),
-        routes:[
-
+        childrens:[
+            {
+                path:'/Layout/Child',
+                name:'option1',
+                component: React.lazy(() => import ('../view/page/Child')),
+            }
         ]
     }
 ]
-
+export const childernRoutes = [
+    ...routes[1].childrens
+]
 export default routes;
