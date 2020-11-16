@@ -17,7 +17,22 @@ const routes = [
                 path:'/Layout/Child',
                 name:'option1',
                 component: React.lazy(() => import ('../view/page/Child')),
-            }
+                render: () => (
+                    <Redirect to="/Layout/Child/Child2"/>
+                ),
+                childrens:[
+                    {
+                        path:'/Layout/Child/Child2',
+                        name:'option1_1',
+                        component: React.lazy(() => import ('../view/page/Child2')),
+                    }
+                ]
+            },
+            {
+                path:'/Layout/Child3',
+                name:'option3',
+                component: React.lazy(() => import ('../view/page/Child2')),
+            },
         ]
     }
 ]

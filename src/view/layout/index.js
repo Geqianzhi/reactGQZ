@@ -2,22 +2,20 @@ import React,{useState,memo} from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import {childernRoutes} from '../../router';
 import { NavLink } from "react-router-dom";
-import { renderRoutes } from "react-router-config";
 import './layout.less';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     UserOutlined,
+ 
 } from '@ant-design/icons';
 const {Header,Sider,Content} = Layout;
-// const { SubMenu } = Menu;
+const { SubMenu } = Menu;
 function LayoutPage(props) {
     const [collapsed,setCollapsed] = useState(false);
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
-    console.log(props)
-    const {route} = props;
     return (
         <>
             <Layout className="layout">
@@ -32,8 +30,18 @@ function LayoutPage(props) {
 
                        {
                            childernRoutes.map((e,index) => {
-                               if(e.childrens){
-                                    return null
+                               if(e.hasOwnProperty("childrens")){
+                                    const childrens = e.childrens;
+                                    let list = childrens.map((item,i)=>{
+                                        return (
+                                            <SubMenu key={index} icon={<UserOutlined />} title={e.name}>
+                                                <Menu.Item key={`${index}-${i}`}>
+                                                    <NavLink to={item.path}>{item.name}</NavLink>
+                                                </Menu.Item>
+                                            </SubMenu>
+                                        )
+                                    })   
+                                    return list;
                                }else{
                                     return (
                                         <Menu.Item key={index} icon={<UserOutlined />}>
@@ -58,7 +66,7 @@ function LayoutPage(props) {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                     </Header>
-                    <Content >{renderRoutes(route.childrens)}</Content>
+                    <Content ></Content>
                 </Layout>
             </Layout>
         </>
