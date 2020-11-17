@@ -11,7 +11,8 @@ import {
 } from '@ant-design/icons';
 const {Header,Sider,Content} = Layout;
 const { SubMenu } = Menu;
-function LayoutPage() {
+
+function LayoutPage(props) {
     const [collapsed,setCollapsed] = useState(false);
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)

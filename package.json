@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.12.1",
     "@craco/craco": "^5.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -43,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "webpackbar": "^4.0.0"
   }
+ 
 }

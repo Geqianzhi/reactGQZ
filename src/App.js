@@ -1,15 +1,16 @@
 import react from 'react';
 import BasicRoute from './view/layout/BasicRoute';
-import {BrowserRouter} from 'react-router-dom'
 import './App.less';
+import store from './Mobx';
+import {Provider} from 'mobx-react'
 class App extends react.Component {
     render() {
-        return (          
-          <BrowserRouter>
+        return (                    
               <div className="App">
-                  <BasicRoute/>
-              </div>
-          </BrowserRouter>
+                    <Provider store={store}>
+                        <BasicRoute/>
+                    </Provider>
+              </div>         
         )
     };
    
