@@ -2,6 +2,7 @@ import React,{useState,memo,Suspense} from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import {childernRoutes} from '../../router';
 import { NavLink,Route } from "react-router-dom";
+import {observer,inject} from 'mobx-react';
 import './layout.less';
 import {
     MenuUnfoldOutlined,
@@ -17,6 +18,11 @@ function LayoutPage(props) {
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
+    console.log(props)
+    const selectRoute = (item) =>{
+        const {store} = props;
+        store.changeRoutes(item);
+    }
     return (
         <>
             <Layout className="layout">
@@ -35,7 +41,7 @@ function LayoutPage(props) {
                                         return (
                                             <SubMenu key={index} icon={<UserOutlined />} title={e.name}>
                                                 <Menu.Item key={`${index}-${i}`}>
-                                                    <NavLink to={item.path}>{item.name}</NavLink>
+                                                    <NavLink to={item.path} onClick={()=>selectRoute(item)}>{item.name}</NavLink>
                                                 </Menu.Item>
                                             </SubMenu>
                                         )
@@ -44,7 +50,7 @@ function LayoutPage(props) {
                                }else{
                                     return (
                                         <Menu.Item key={index} icon={<UserOutlined />}>
-                                            <NavLink to={e.path}>{e.name}</NavLink>
+                                            <NavLink to={e.path} onClick={()=>selectRoute(e)}>{e.name}</NavLink>
                                         </Menu.Item>
                                     )
                                }
@@ -60,9 +66,15 @@ function LayoutPage(props) {
                             {collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/> }
                         </div>
                         <Breadcrumb style={{ marginLeft: '16px' }}>
-                            <Breadcrumb.Item>Home</Breadcrumb.Item>
-                            <Breadcrumb.Item>List</Breadcrumb.Item>
-                            <Breadcrumb.Item>App</Breadcrumb.Item>
+                            {
+                                props.store.activeRoutes.map((e,index)=>{
+                                    return (
+                                        <Breadcrumb.Item key={index}>
+                                            <NavLink to={e.path}>{e.name}</NavLink>
+                                        </Breadcrumb.Item>
+                                    )
+                                })
+                            }                                                       
                         </Breadcrumb>
                     </Header>
                     <Content >                    
@@ -91,4 +103,4 @@ function LayoutPage(props) {
         </>
     )
 }
-export default memo(LayoutPage);
+export default memo(inject('store')(observer(LayoutPage)));
