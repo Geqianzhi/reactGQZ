@@ -1,7 +1,7 @@
-import React,{useState,memo} from 'react';
+import React,{useState,memo,Suspense} from 'react';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import {childernRoutes} from '../../router';
-import { NavLink } from "react-router-dom";
+import { NavLink,Route } from "react-router-dom";
 import './layout.less';
 import {
     MenuUnfoldOutlined,
@@ -16,9 +16,6 @@ function LayoutPage() {
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
-    const selectLink =({ item, key, keyPath, domEvent }) =>{
-        console.log(item)
-    };
     return (
         <>
             <Layout className="layout">
@@ -27,7 +24,6 @@ function LayoutPage() {
                     <Menu
                         mode="inline"
                         theme="dark"
-                        onClick={selectLink}
                     >   
 
                        {
@@ -38,8 +34,7 @@ function LayoutPage() {
                                         return (
                                             <SubMenu key={index} icon={<UserOutlined />} title={e.name}>
                                                 <Menu.Item key={`${index}-${i}`}>
-                                                    {/* <NavLink to={item.path}>{item.name}</NavLink> */}
-                                                    {item.name}
+                                                    <NavLink to={item.path}>{item.name}</NavLink>
                                                 </Menu.Item>
                                             </SubMenu>
                                         )
@@ -69,8 +64,26 @@ function LayoutPage() {
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                     </Header>
-                    <Content >
-                        {/* <Route path="/" exact component={Home}></Route> */}
+                    <Content >                    
+                        <Suspense fallback={<div>loading</div>}>
+                                {
+                                    childernRoutes.map((e,index) => {
+                                        if(e.hasOwnProperty("childrens")){
+                                                const childrens = e.childrens;
+                                                let list = childrens.map((item,i)=>{
+                                                    return (
+                                                        <Route key={`${index}-${i}`} path={item.path} component={item.component}></Route>
+                                                    )
+                                                })   
+                                                return list;
+                                        }else{
+                                                return (
+                                                    <Route key={index} path={e.path} component={e.component}></Route>
+                                                )
+                                        }
+                                    })
+                                }
+                        </Suspense>
                     </Content>
                 </Layout>
             </Layout>

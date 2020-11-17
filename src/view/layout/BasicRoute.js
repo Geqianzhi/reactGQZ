@@ -1,14 +1,13 @@
 import React,{Suspense} from 'react'
-import {Route,Switch,BrowserRouter} from 'react-router-dom'
-import Routes from '../../router'
+import {Route,BrowserRouter} from 'react-router-dom'
+import Layout from './index'
 export default function BasicRoute() {
-    return (
+    return (              
         <BrowserRouter>
-                <Switch>
-                  <Suspense fallback={<div>loading</div>}>
-                      <Route exact path="/" component={Routes[0].component}/>
-                  </Suspense>
-                </Switch>
-        </BrowserRouter>
+            <Suspense fallback={<div>loading</div>}>
+                <Route path="/" component={Layout}></Route>
+            </Suspense>
+        </BrowserRouter>        
+       
     )
 }
