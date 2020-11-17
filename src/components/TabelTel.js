@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {observer,inject} from 'mobx-react';
 import {Table} from 'antd';
 const columns = [
     {
@@ -63,7 +64,8 @@ const data = [
     },
 ]
 
-
+@inject('store')
+@observer
 class TabelTel extends Component {
     constructor(){
         super()
@@ -73,6 +75,7 @@ class TabelTel extends Component {
         }
     };
     render() {
+      console.log(this.props)
         return (
             <>
                 <Table bordered columns={this.state.columns} dataSource={this.state.data} />
