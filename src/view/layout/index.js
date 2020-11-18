@@ -1,5 +1,5 @@
 import React,{useState,memo,Suspense} from 'react';
-import {Layout, Menu, Breadcrumb} from 'antd';
+import {Layout, Menu, Breadcrumb, Switch} from 'antd';
 import {childernRoutes} from '../../router';
 import { NavLink,Route } from "react-router-dom";
 import {observer,inject} from 'mobx-react';
@@ -79,23 +79,25 @@ function LayoutPage(props) {
                     </Header>
                     <Content >                    
                         <Suspense fallback={<div>loading</div>}>
-                                {
-                                    childernRoutes.map((e,index) => {
-                                        if(e.hasOwnProperty("childrens")){
-                                                const childrens = e.childrens;
-                                                let list = childrens.map((item,i)=>{
+                               <Switch>
+                                    {
+                                        childernRoutes.map((e,index) => {
+                                            if(e.hasOwnProperty("childrens")){
+                                                    const childrens = e.childrens;
+                                                    let list = childrens.map((item,i)=>{
+                                                        return (
+                                                            <Route key={`${index}-${i}`} path={item.path} component={item.component}></Route>
+                                                        )
+                                                    })   
+                                                    return list;
+                                            }else{
                                                     return (
-                                                        <Route key={`${index}-${i}`} path={item.path} component={item.component}></Route>
+                                                        <Route key={index} path={e.path} component={e.component}></Route>
                                                     )
-                                                })   
-                                                return list;
-                                        }else{
-                                                return (
-                                                    <Route key={index} path={e.path} component={e.component}></Route>
-                                                )
-                                        }
-                                    })
-                                }
+                                            }
+                                        })
+                                    }
+                               </Switch>
                         </Suspense>
                     </Content>
                 </Layout>
