@@ -1,7 +1,7 @@
 import React,{useState,memo,Suspense} from 'react';
-import {Layout, Menu, Breadcrumb, Switch} from 'antd';
+import {Layout, Menu, Breadcrumb} from 'antd';
 import {childernRoutes} from '../../router';
-import { NavLink,Route } from "react-router-dom";
+import { NavLink,Route,Switch as Sith } from "react-router-dom";
 import {observer,inject} from 'mobx-react';
 import './layout.less';
 import {
@@ -79,7 +79,7 @@ function LayoutPage(props) {
                     </Header>
                     <Content >                    
                         <Suspense fallback={<div>loading</div>}>
-                               <Switch>
+                               <Sith>
                                     {
                                         childernRoutes.map((e,index) => {
                                             if(e.hasOwnProperty("childrens")){
@@ -97,7 +97,7 @@ function LayoutPage(props) {
                                             }
                                         })
                                     }
-                               </Switch>
+                               </Sith>
                         </Suspense>
                     </Content>
                 </Layout>

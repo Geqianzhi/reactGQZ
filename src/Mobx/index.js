@@ -8,7 +8,7 @@ class state {
     @action
     changeRoutes = route =>{
         if(this.activeRoutes.length>0){
-            let flag = this.activeRoutes.some(e => e.name == route.name);
+            let flag = this.activeRoutes.some(e => e.name === route.name);
             if(!flag){
                 this.activeRoutes.push({...route});
             }
