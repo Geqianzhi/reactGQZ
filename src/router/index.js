@@ -1,20 +1,21 @@
 import React from 'react';
+import {
+    AlertOutlined,
+    WindowsOutlined
+} from '@ant-design/icons';
 export const childernRoutes = [
     {
-        path:'/Child',
-        name:'option1',
+        path:'/css3',
+        name:'css3',
+        icon:<WindowsOutlined />,
         childrens:[
             {
-                path:'/Child/Child2',
-                name:'option1_1',
-                component: React.lazy(() => import ('../components/TabelTel')),
+                path:'/css3/CubicBezier',
+                icon:<AlertOutlined />,
+                name:'CubicBezier(贝塞尔曲线)',
+                component: React.lazy(() => import ('../view/page/css3/CubicBezier')),
             }
         ]
-    },
-    {
-        path:'/Child3',
-        name:'option3',
-        component: React.lazy(() => import ('../view/page/Child2')),
     },
 ]
 
