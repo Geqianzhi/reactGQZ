@@ -39,8 +39,8 @@ function LayoutPage(props) {
                                     const childrens = e.childrens;
                                     let list = childrens.map((item,i)=>{
                                         return (
-                                            <SubMenu key={index} icon={item.icon} title={e.name}>
-                                                <Menu.Item key={`${index}-${i}`}>
+                                            <SubMenu key={index} icon={e.icon} title={e.name}>
+                                                <Menu.Item key={`${index}-${i}`} icon={item.icon}>
                                                     <NavLink to={item.path} onClick={()=>selectRoute(item)}>{item.name}</NavLink>
                                                 </Menu.Item>
                                             </SubMenu>
