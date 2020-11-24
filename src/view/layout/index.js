@@ -37,16 +37,18 @@ function LayoutPage(props) {
                            childernRoutes.map((e,index) => {
                                if(e.hasOwnProperty("childrens")){
                                     const childrens = e.childrens;
-                                    let list = childrens.map((item,i)=>{
-                                        return (
-                                            <SubMenu key={index} icon={e.icon} title={e.name}>
-                                                <Menu.Item key={`${index}-${i}`} icon={item.icon}>
-                                                    <NavLink to={item.path} onClick={()=>selectRoute(item)}>{item.name}</NavLink>
-                                                </Menu.Item>
-                                            </SubMenu>
+                                    let items = childrens.map((item,i)=>{
+                                        return (                                           
+                                            <Menu.Item key={`${index}-${i}`} icon={item.icon}>
+                                                <NavLink to={item.path} onClick={()=>selectRoute(item)}>{item.name}</NavLink>
+                                            </Menu.Item>                                           
                                         )
                                     })   
-                                    return list;
+                                    return (                                        
+                                        <SubMenu key={index} icon={e.icon} title={e.name}>                                                                                                                                           
+                                            {items}
+                                        </SubMenu>
+                                    )
                                }else{
                                     return (
                                         <Menu.Item key={index} icon={e.icon}>
