@@ -18,7 +18,6 @@ function LayoutPage(props) {
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
-    console.log(props)
     const selectRoute = (item) =>{
         const {store} = props;
         store.changeRoutes(item);
