@@ -13,7 +13,7 @@ export const childernRoutes = [
                 path:'/css3/CubicBezier',
                 icon:<AlertOutlined />,
                 name:'CubicBezier(贝塞尔曲线)',
-                component: React.lazy(() => import ('../view/page/css3/CubicBezier')),
+                component: React.lazy(() => import ('../view/page/css3/Bezier/CubicBezier')),
             }
         ]
     },
