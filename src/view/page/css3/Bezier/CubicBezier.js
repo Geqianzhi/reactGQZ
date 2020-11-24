@@ -6,7 +6,7 @@ import {
 import './Cub.less';
 export default function CubicBezier() {
     return (
-        <div class="container">            
+        <div className="container">            
                 <div className="item">
                     <WechatOutlined style={{fontSize:'80px'}} />
                     <span className="title">微信</span>
