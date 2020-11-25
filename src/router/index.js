@@ -23,6 +23,19 @@ export const childernRoutes = [
             }
         ]
     },
+    {
+        path:'/ReactHook',
+        name:'ReactHook',
+        icon:<WindowsOutlined />,
+        childrens:[
+            {
+                path:'/ReactHook/useState',
+                icon:<AlertOutlined />,
+                name:'useState',
+                component: React.lazy(() => import ('../view/page/ReactHook/useStateApi')),
+            }
+        ]
+    },
 ]
 
 const routes = [

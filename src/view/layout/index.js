@@ -15,6 +15,7 @@ const { SubMenu } = Menu;
 
 function LayoutPage(props) {
     const [collapsed,setCollapsed] = useState(false);
+    const [keys,setKeys] = useState('');
     const setColl = (val)=>{
         val ? setCollapsed(false):setCollapsed(true)
     };
@@ -30,27 +31,29 @@ function LayoutPage(props) {
                     <Menu
                         mode="inline"
                         theme="dark"
+                        onClick={(e) =>setKeys(e.key)}
+                        selectedKeys={[keys]}
                     >   
 
                        {
-                           childernRoutes.map((e,index) => {
+                           childernRoutes.map((e) => {
                                if(e.hasOwnProperty("childrens")){
                                     const childrens = e.childrens;
                                     let items = childrens.map((item,i)=>{
                                         return (                                           
-                                            <Menu.Item key={`${index}-${i}`} icon={item.icon}>
+                                            <Menu.Item key={item.path} icon={item.icon}>
                                                 <NavLink to={item.path} onClick={()=>selectRoute(item)}>{item.name}</NavLink>
                                             </Menu.Item>                                           
                                         )
                                     })   
                                     return (                                        
-                                        <SubMenu key={index} icon={e.icon} title={e.name}>                                                                                                                                           
+                                        <SubMenu key={e.path} icon={e.icon} title={e.name}>                                                                                                                                           
                                             {items}
                                         </SubMenu>
                                     )
                                }else{
                                     return (
-                                        <Menu.Item key={index} icon={e.icon}>
+                                        <Menu.Item key={e.path} icon={e.icon}>
                                             <NavLink to={e.path} onClick={()=>selectRoute(e)}>{e.name}</NavLink>
                                         </Menu.Item>
                                     )
@@ -70,8 +73,8 @@ function LayoutPage(props) {
                             {
                                 props.store.activeRoutes.map((e,index)=>{
                                     return (
-                                        <Breadcrumb.Item key={index}>
-                                            <NavLink to={e.path}>{e.name}</NavLink>
+                                        <Breadcrumb.Item key={index} onClick={()=>setKeys(e.path)}>
+                                            <NavLink to={e.path} >{e.name}</NavLink>
                                         </Breadcrumb.Item>
                                     )
                                 })
