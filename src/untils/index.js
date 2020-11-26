@@ -74,3 +74,14 @@ export function throttle(func, wait ,type) {
         }
     }
 }
+
+/**
+*   @desc 深度拷贝
+*/
+export function deepCopy(obj) {
+    return new Promise(resolve => {
+        const {port1, port2} = new MessageChannel();
+        port2.onmessage = ev => resolve(ev.data);
+        port1.postMessage(obj);
+    });
+}

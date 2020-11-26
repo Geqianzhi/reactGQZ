@@ -32,7 +32,20 @@ export const childernRoutes = [
                 path:'/ReactHook/useState',
                 icon:<AlertOutlined />,
                 name:'useState',
-                component: React.lazy(() => import ('../view/page/ReactHook/useStateApi')),
+                component: React.lazy(() => import ('../view/page/ReactHook/useState/useStateApi')),
+            }
+        ]
+    },
+    {
+        path:'/JavaScript',
+        name:'JavaScript',
+        icon:<WindowsOutlined />,
+        childrens:[
+            {
+                path:'/ReactHook/function',
+                icon:<AlertOutlined />,
+                name:'函数',
+                component: React.lazy(() => import ('../view/page/JavaScript/Function/fun')),
             }
         ]
     },
