@@ -1,15 +1,24 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Button} from 'antd';
+import {list} from '../../../../Mobx/data';
+import {getTreeData} from '../../../../untils/index'
 export default function useStateApi() {
-    const [btnText,setBtnText] = useState('useStateApi')
+    const [btnText,setBtnText] = useState(1)
     
     const handelClick = () =>{
-        console.log('11111111111111111')
-        setBtnText("useStateApi11111111")
+        setBtnText(btnText + 1);
+        let arr = getTree();
+        console.log(arr)
+    }
+    useEffect(()=>{
+        document.title = btnText;
+    })
+    function getTree(){
+        return getTreeData(list,'001000000000000','partyOrgParentId','partyOrgId','childList','key')
     }
     return (
         <div>
-            <Button type="primary" onClick={()=>handelClick}>{btnText}</Button>
+            <Button type="primary" size="large" onClick={()=>handelClick()}>{btnText}</Button>
         </div>
     )
 }
