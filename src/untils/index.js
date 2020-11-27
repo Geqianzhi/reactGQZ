@@ -90,7 +90,6 @@ export function deepCopy(obj) {
 */
 export function getTreeData(data, pid, pidName = 'parentId', idName = 'id', childrenName = 'children', key) {
     let arr = [];
-
     for (let i = 0; i < data.length; i++) {
         if (data[i][pidName] == pid) {
             data[i][key] = data[i][idName];
