@@ -3,7 +3,7 @@ import instance from '../../../../untils/axios';
 import { Button } from 'antd'
 export default function fun() {
     function getAjax(){
-        instance.post('app/appofficialsenddeliverinfo/getStatistic').then(data =>{
+        instance.get('http://apiv2.vmovier.com/api/post/getPostInCate?cateid=0&p=1').then(data =>{
             console.log(data)
         })
     }
