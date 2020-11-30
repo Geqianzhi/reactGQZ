@@ -28,5 +28,14 @@ module.exports = {
     host: "0.0.0.0",//主机地址
     port: 8792,//端口号
     open: false,
+    proxy: { //设置代理,可解决跨5
+      "/api": {
+        target: "http://192.168.1.87:9000/",
+        changeOrigin: true,
+        pathRewrite: {//地址重写
+          '^/api': "/"
+        }
+      },
+    }
   }
 };
