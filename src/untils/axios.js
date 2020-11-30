@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { message} from 'antd';
 
 const instance = axios.create({
     baseURL: '/api',
@@ -14,46 +14,46 @@ function msg(err) {
     if (err.code) {
       switch (err.code) {
         case 400:
-          alert(err.code);
+          message.error(err.code);;
           break;
         case 401:
-          alert("未授权，请登录");
+        message.error("未授权，请登录");
           break;
   
         case 403:
-          alert("拒绝访问");
+            message.error("拒绝访问");
           break;
   
         case 404:
-          alert("请求地址出错");
+            message.error("请求地址出错");
           break;
   
         case 408:
-          alert("请求超时");
+            message.error("请求超时");
           break;
   
         case 500:
-          alert("服务器内部错误");
+            message.error("服务器内部错误");
           break;
   
         case 501:
-          alert("服务未实现");
+            message.error("服务未实现");
           break;
   
         case 502:
-          alert("网关错误");
+            message.error("网关错误");
           break;
   
         case 503:
-          alert("服务不可用");
+            message.error("服务不可用");
           break;
   
         case 504:
-          alert("网关超时");
+            message.error("网关超时");
           break;
   
         case 505:
-          alert("HTTP版本不受支持");
+            message.error("HTTP版本不受支持");
           break;
         default:
       }
