@@ -91,7 +91,7 @@ export function deepCopy(obj) {
 export function getTreeData(data, pid, pidName = 'parentId', idName = 'id', childrenName = 'children', key) {
     let arr = [];
     for (let i = 0; i < data.length; i++) {
-        if (data[i][pidName] == pid) {
+        if (data[i][pidName] === pid) {
             data[i][key] = data[i][idName];
             data[i][childrenName] = getTreeData(data, data[i][idName], pidName, idName, childrenName);
             arr.push(data[i]);
@@ -118,9 +118,9 @@ export function foreachTree(data, childrenName = 'children', callback) {
 export function traceParentNode(pid, data, rootPid, pidName = 'parentId', idName = 'id', childrenName = 'children') {
     let arr = [];
     foreachTree(data, childrenName, (node) => {
-        if (node[idName] == pid) {
+        if (node[idName] === pid) {
             arr.push(node);
-            if (node[pidName] != rootPid) {
+            if (node[pidName] !== rootPid) {
                 arr = arr.concat(traceParentNode(node[pidName], data, rootPid, pidName, idName));
             }
         }

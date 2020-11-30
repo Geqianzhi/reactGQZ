@@ -26,7 +26,7 @@ module.exports = {
   },
   devServer:{
     host: "0.0.0.0",//主机地址
-    port: 8888,//端口号
+    port: 8792,//端口号
     open: false,
   }
 };
