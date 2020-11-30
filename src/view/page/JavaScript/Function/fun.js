@@ -3,7 +3,7 @@ import instance from '../../../../untils/axios';
 import { Button } from 'antd'
 export default function fun() {
     function getAjax(){
-        instance.post('app/appofficialsenddeliverinfo/getStatistics').then(data =>{
+        instance.post('app/appofficialsenddeliverinfo/getStatistic').then(data =>{
             console.log(data)
         })
     }
