@@ -11,7 +11,7 @@ export default function useStateApi() {
         console.log(arr)
     }
     useEffect(()=>{
-        document.title = btnText;
+        
     })
     function getTree(){
         return getTreeData(list,'001000000000000','partyOrgParentId','partyOrgId','childList','key')

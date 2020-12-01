@@ -1,6 +1,7 @@
   
 const CracoLessPlugin = require('craco-less');
 const WebpackBar = require('webpackbar');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   plugins: [
     {
@@ -16,12 +17,26 @@ module.exports = {
     }
   ],
   babel:{
-    plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]]
+    plugins: [
+      ["@babel/plugin-proposal-decorators", { legacy: true }],
+      ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true}],//设置为true即是less
+    ]
      
   },
   webpack:{
     plugins:[
-        new WebpackBar()
+        new WebpackBar(),
+        new UglifyJsPlugin({
+          uglifyOptions: {
+              compress: {
+                  warnings: false,
+                  drop_debugger: true,
+                  drop_console: true,
+              },
+          },
+          sourceMap: false,
+          parallel: true,
+      }),
     ]
   },
   devServer:{
@@ -35,7 +50,7 @@ module.exports = {
         pathRewrite: {//地址重写
           '^/api': "/"
         }
-      },
+      }, 
     }
   }
 };

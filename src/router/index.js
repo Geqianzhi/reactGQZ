@@ -20,6 +20,12 @@ export const childernRoutes = [
                 icon:<AlertOutlined />,
                 name:'Flex(弹性布局)',
                 component: React.lazy(() => import ('../view/page/css3/Flex/Flex.js')),
+            },
+            {
+                path:'/css3/ClipPath',
+                icon:<AlertOutlined />,
+                name:'ClipPath(裁剪)',
+                component: React.lazy(() => import ('../view/page/css3/ClipPath/ClipPath.js')),
             }
         ]
     },
