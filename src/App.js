@@ -6,10 +6,10 @@ import {Provider} from 'mobx-react'
 class App extends react.Component {
     render() {
         return (                    
-              <div className="App">
-                    <Provider store={store}>
-                        <BasicRoute/>
-                    </Provider>
+              <div className="App">               
+                <Provider store={store}>
+                    <BasicRoute/>
+                </Provider>                
               </div>         
         )
     };

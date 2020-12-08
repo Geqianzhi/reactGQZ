@@ -88,7 +88,7 @@ function LayoutPage(props) {
                         </Breadcrumb>
                     </Header>
                     <Content >                    
-                        <Suspense fallback={loading}>
+                        <Suspense fallback={loading()}>
                                <Sith>
                                     {
                                         childernRoutes.map((e,index) => {

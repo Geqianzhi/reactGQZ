@@ -2,8 +2,12 @@
 const CracoLessPlugin = require('craco-less');
 const WebpackBar = require('webpackbar');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const reactHotReloadPlugin = require('craco-plugin-react-hot-reload');
 module.exports = {
   plugins: [
+    // {
+    //   plugin:reactHotReloadPlugin
+    // },
     {
       plugin: CracoLessPlugin,
       options: {
@@ -15,6 +19,7 @@ module.exports = {
         },
       },
     }
+   
   ],
   babel:{
     plugins: [
@@ -43,6 +48,7 @@ module.exports = {
     host: "0.0.0.0",//主机地址
     port: 8792,//端口号
     open: false,
+    hot:true,
     proxy: { //设置代理,可解决跨5
       "/api": {
         target: "http://192.168.1.87:9000/",
