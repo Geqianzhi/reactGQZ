@@ -26,6 +26,12 @@ export const childernRoutes = [
                 icon:<AlertOutlined />,
                 name:'ClipPath(裁剪)',
                 component: React.lazy(() => import ('../view/page/css3/ClipPath/ClipPath.js')),
+            },
+            {
+                path:'/css3/Trilateral',
+                icon:<AlertOutlined />,
+                name:'Trilateral(三角形)',
+                component: React.lazy(() => import ('../view/page/css3/Trilateral/Trilateral')),
             }
         ]
     },

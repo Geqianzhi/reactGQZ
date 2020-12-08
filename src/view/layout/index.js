@@ -1,5 +1,5 @@
 import React,{useState,memo,Suspense} from 'react';
-import {Layout, Menu, Breadcrumb} from 'antd';
+import {Layout, Menu, Breadcrumb,Spin} from 'antd';
 import {childernRoutes} from '../../router';
 import { NavLink,Route,Switch as Sith } from "react-router-dom";
 import {observer,inject} from 'mobx-react';
@@ -22,6 +22,12 @@ function LayoutPage(props) {
     const selectRoute = (item) =>{
         const {store} = props;
         store.changeRoutes(item);
+    }
+
+    const loading = () =>{
+        return (
+            <Spin tip="Loading..." />
+        )
     }
     return (
         <>
@@ -82,7 +88,7 @@ function LayoutPage(props) {
                         </Breadcrumb>
                     </Header>
                     <Content >                    
-                        <Suspense fallback={<div>loading</div>}>
+                        <Suspense fallback={loading}>
                                <Sith>
                                     {
                                         childernRoutes.map((e,index) => {
